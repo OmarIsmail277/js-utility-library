@@ -47,5 +47,36 @@ function customReduce(arr, callbackFn, initialValue) {
 // 4. groupBy
 // iterate over arr, group objects by a given property key
 
+function customGroupBy(arr, callbackFn) {
+  const obj = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    const newKey = callbackFn(arr[i]);
+
+    obj[newKey] ||= [];
+    obj[newKey].push(arr[i]);
+
+    // if(newKey in obj){
+    //   obj[newKey].push(arr[i]);
+    // }
+    // else{
+    //   obj[newKey] = [arr[i]];
+    // }
+  }
+  return obj;
+}
+
 // 5. flattenArray
 // recursively flatten a deeply nested array into a single level
+
+function flatternArray(arr) {
+  let flattenedArray = [];
+
+  for (element of arr) {
+    if (!Array.isArray(element)) flattenedArray.push(element);
+    else {
+      flattenedArray.push(...flatternArray(element));
+    }
+  }
+  return flattenedArray;
+}
