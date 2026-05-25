@@ -53,3 +53,28 @@ function createCounter(action) {
 
 // 9. createSecretHolder
 // use closure to hold private data, return getSecret/setSecret
+
+function createSecretHolder() {
+  let mySecret = "My Password";
+
+  return {
+    getSecret() {
+      return mySecret;
+    },
+    setSecret(newValue) {
+      mySecret = newValue;
+    },
+  };
+}
+
+const holder = createSecretHolder();
+
+const x = holder.getSecret();
+console.log(x);
+
+holder.setSecret("New Password");
+const y = holder.getSecret();
+console.log(y);
+
+// Try to access it
+// console.log(holder.secret); // undefined
